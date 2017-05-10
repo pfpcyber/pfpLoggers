@@ -321,7 +321,7 @@ try
     end
     
     FieldValue = config.Pico3406D_capture.TriggerSource;
-    if sum(FieldValue==(0:3)) == 0
+    if sum(FieldValue==(0:4)) == 0
         errorStr = sprintf('%s%s\n',errorStr,'Picos3406D_capture.TriggerSource must be between 0-4');
     end
     

@@ -29,7 +29,6 @@ S1 = getappdata(0,'S1');
 imageArray=imread('PFPLogo.jpg');
 axes(handles.logo);
 imshow(imageArray);
-axes(handles.waveform);
 
 [S1, ConfigOrg] = getConfigJSON;
 setappdata(0,'ConfigOrg',ConfigOrg);
@@ -41,27 +40,7 @@ else
 end
 
 setappdata(0,'S1',S1);
-
-plot(zeros(1,S1.TimeTrace.TraceLength));
-ylabel('Voltage (mV)');
-
-% find max vertical range based on enable channels
-EnableVec = [S1.channelSettings(1).Enabled S1.channelSettings(2).Enabled S1.channelSettings(3).Enabled S1.channelSettings(4).Enabled];
-
-
-
-for idx = 1:length(EnableVec)
-    if isequal(EnableVec(idx),true)
-        MaxVertRangeSetting(idx) = S1.channelSettings(idx).Range;
-    else
-        MaxVertRangeSetting(idx) = 0;
-    end
-end
-[M,I] = max(MaxVertRangeSetting); 
-ylim([-(M) M]);
-
 set(0,'UserData',0);
-
 set(handles.Scope,'Value',1);
 
 set(handles.SigMFStoragePath,'String',S1.DataPaths.SigMF);
@@ -305,6 +284,7 @@ while(hasAutoStopped == false && getStreamingLatestValues == 0)
         clear lastValuePosn;
         clear startIndex;
         Flag = LogData2SigMF( S1,ObjSigMF,TotalTraceCount,Opt );
+        set(handles.SequenceNumber,'String',[num2str(TotalTraceCount), ' %']);
         TotalTraceCount = TotalTraceCount +1;
         
     end
@@ -454,5 +434,12 @@ setappdata(0,'S1',S1);
 % --- Executes during object creation, after setting all properties.
 function OpeningFigure_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to OpeningFigure (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+
+% --- Executes during object creation, after setting all properties.
+function SequenceNumber_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to SequenceNumber (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called

@@ -182,8 +182,8 @@ switch S1.TimeTrace.SampleFreq
         set(handles.samplefrequency,'Value',9);
     case 9 % 1KHZ
         set(handles.samplefrequency,'Value',10);
-    case 1e3
-        set(handles.samplefrequency,'Value',11);
+    otherwise
+        set(handles.samplefrequency,'Value',10);
 end
 
 set(handles.tracelength,'String',S1.TimeTrace.TraceLength);

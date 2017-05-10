@@ -1,0 +1,16 @@
+
+newSamples
+previousTotal
+totalSmaples
+startIndex
+hasTriggererd
+
+newSamples = 60000;startIndex = 0
+previousTotal = totalSamples; 0
+totalSampes = 0 + 60000 ; totalSampels + newSamples
+firstValuePosn = 0 +1; startIndex +1
+lastValuePosn = 0 + 60000; startIndex + newSamples
+
+BufferFinal (previousTotal+1:totalSamples) = AppBuffer(firstValuePosn:lastValuePosn)
+
+clear firstValuePosn,lastValuePosn, startIndex

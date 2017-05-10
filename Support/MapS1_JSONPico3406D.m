@@ -29,7 +29,7 @@ switch S1.Trigger.TriggerChannel
         Config.Pico3406D_capture.ChanACoupling = S1.Trigger.VerticalCoupling;
     case 1
         Config.Pico3406D_capture.ChanBVerticalRange = S1.Trigger.VerticalRange;
-        Config.Pico3406D_capture.ChanBCouplingS1.Trigger.VerticalCoupling;
+        Config.Pico3406D_capture.ChanBCoupling = S1.Trigger.VerticalCoupling;
     case 2
         Config.Pico3406D_capture.ChanCVerticalRange = S1.Trigger.VerticalRange;
         Config.Pico3406D_capture.ChanCCoupling = S1.Trigger.VerticalCoupling;

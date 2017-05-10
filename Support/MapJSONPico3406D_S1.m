@@ -7,8 +7,8 @@ S1 = struct;
 S1.P2Scan.configFilePath = [ConfigFilePath];
 S1.P2Scan.configChanged = 0;
 S1.P2Scan.workingDirectory = pwd;
-S1.P2Scan.VerticalRangeDefaults = [.01 .02 .05, .100, .200, .500, 1, 2, 5, 10, 20]; 
-
+S1.P2Scan.VerticalRangeDefaults = [.02 .05, .100, .200, .500, 1, 2, 5, 10, 20]; 
+S1.P2Scan.FsDefaults = [1e9 500e6, 250e6, 125e6 62.5e6 31.25e6 1e6 100e3 10e3 1e3];
 
 %% [TimeTrace]
 

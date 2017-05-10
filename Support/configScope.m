@@ -8,25 +8,23 @@ end
 end
 
 
-
-
 % Picoscope
 function [S1, exitcode] = configPico(S1)
+global methodinfo structs enuminfo ThunkLibName;
 exitcode = 0;
-addpath('PicoSDK')
-addpath('PicoSDK/win64');
+addpath('win64')
 
 
-S1.P2Scan.scope = instrfind('Status','open','Name','scope-PS3000a_IC_drv');
+S1.P2Scan.scope = instrfind('Status','open','Name','scope-picotech_ps3000a_generic');
 if isempty(S1.P2Scan.scope)
-    S1.P2Scan.scope = icdevice('PS3000a_IC_drv.mdd', '');
+    % Note*** the driver 'picotech_ps3000a_generic' works in streaming
+    % mode, the other drivers do not.
+    S1.P2Scan.scope = icdevice('picotech_ps3000a_generic', '');
     connect(S1.P2Scan.scope);
-    [methodinfo, structs, enuminfo, ThunkLibName] = PS3000aMFile;
+    [methodinfo, structs, enuminfo, ThunkLibName] = ps3000aMFile;
     disp('Device created success');
 end
 
-% Obtain Maximum & Minimum values 
-max_val_status = invoke(S1.P2Scan.scope, 'ps3000aMaximumValue');
 
 
 % Get active channels
@@ -34,30 +32,18 @@ max_val_status = invoke(S1.P2Scan.scope, 'ps3000aMaximumValue');
 ChanIdx = [0 1 2 3];
 
 for idx = 1:length(ChanIdx)
-  % invoke(S1.P2Scan.scope, 'ps3000aSetChannel', ChanIdx(idx),ChanEnable(idx), VerticalCoupling(idx), EnumRange(idx), 0.0);
-   invoke(S1.P2Scan.scope, 'ps3000aSetChannel', ChanIdx(idx), S1.channelSettings(idx).Enabled,...
+   status  = invoke(S1.P2Scan.scope, 'ps3000aSetChannel', ChanIdx(idx), S1.channelSettings(idx).Enabled,...
        S1.channelSettings(idx).Coupling,S1.channelSettings(idx).Range,S1.channelSettings(idx).OffSet);
 end
 
+
 % Set Simple Trigger
 enable = 1;
-delay = 0;     
+delay = 0;
 
-if S1.Trigger.TriggerChannel == 5 % This implies EXT as trigger
-    threshold = mv2adc(S1.Trigger.TriggerLevel*1000, 5000, S1.P2Scan.scope.maxValue);
-else
-    if S1.Trigger.TriggerLevel*1000 >= S1.P2Scan.VerticalRangeDefaults(S1.Trigger.VerticalRange)*1000
-        threshold = S1.P2Scan.scope.maxValue;
-    else
-        threshold = mv2adc(S1.Trigger.TriggerLevel*1000,...
-            S1.P2Scan.VerticalRangeDefaults(S1.Trigger.VerticalRange)*1000,...
-            S1.P2Scan.scope.maxValue);
-    end
-end
-
-trigger_status = invoke(S1.P2Scan.scope, 'ps3000aSetSimpleTrigger', enable,...
-     S1.Trigger.TriggerChannel, threshold, S1.Trigger.TriggerSlope+2,delay,S1.Trigger.AutoTriggerTimeoutms);
-
+set(S1.P2Scan.scope.Trigger(1), 'autoTriggerMs',S1.Trigger.AutoTriggerTimeoutms);
+set(S1.P2Scan.scope.Trigger(1), 'delay', 0);
+invoke(S1.P2Scan.scope.Trigger(1), 'SetSimpleTrigger',S1.Trigger.TriggerChannel,S1.Trigger.TriggerLevel*1000,S1.Trigger.TriggerSlope+2);
 %Timebase calculation 
 %if S1.Data.DataChannel == S1.Trigger.TriggerChannel
     switch S1.TimeTrace.SampleFreq
@@ -85,14 +71,15 @@ trigger_status = invoke(S1.P2Scan.scope, 'ps3000aSetSimpleTrigger', enable,...
             timebase = floor(125e6/1e3)+2;
     end
 % end
-
 S1.P2Scan.Timebase = timebase;
+S1.P2Scan.scope.timebase = S1.P2Scan.Timebase;
 
 % Pretrigger setup
 S1.P2Scan.PreTriggerSamples = S1.TimeTrace.TraceLength * S1.Trigger.TriggerPosition * .01;
 S1.P2Scan.PostTriggerSamples = S1.TimeTrace.TraceLength * (100-S1.Trigger.TriggerPosition) * .01;
 
-
+set(S1.P2Scan.scope, 'numPreTriggerSamples', 0);
+set(S1.P2Scan.scope, 'numPostTriggerSamples', S1.P2Scan.PostTriggerSamples);
 
 if isequal(S1.channelSettings(1).Enabled,true)
     S1.P2Scan.pBufferA = libpointer('int16Ptr',zeros(S1.TimeTrace.TraceLength,1));
