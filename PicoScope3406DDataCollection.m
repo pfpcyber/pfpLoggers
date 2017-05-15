@@ -152,7 +152,7 @@ switch ActiveChans
         ObjSigMF.core_0x3A_capture{1,1}.PFP_0x3A_channel = ActiveIdx(1);
         ObjSigMF.core_0x3A_capture{1,1}.PFP_0x3A_length = N;
         % Line below removes unused core:capture entires
-        ObjSigMF.core_0x3A_capture = ObjSigMF.core_0x3A_capture{1,1};
+    %    ObjSigMF.core_0x3A_capture = ObjSigMF.core_0x3A_capture{1,1};
         
     case 2
         ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_sample_start = 0;
@@ -165,7 +165,7 @@ switch ActiveChans
         ObjSigMF.core_0x3A_capture{1,2}.PFP_0x3A_channel = ActiveIdx(2);
         ObjSigMF.core_0x3A_capture{1,2}.PFP_0x3A_length = S1.TimeTrace.TraceLength;
         % Line below removes unused core:capture entires
-        ObjSigMF.core_0x3A_capture = {ObjSigMF.core_0x3A_capture{1,1},ObjSigMF.core_0x3A_capture{1,2}};
+    %    ObjSigMF.core_0x3A_capture = {ObjSigMF.core_0x3A_capture{1,1},ObjSigMF.core_0x3A_capture{1,2}};
     case 3
         ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_sample_start = 0;
         ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_sample_rate = S1.TimeTrace.SampleFreq;
@@ -182,8 +182,8 @@ switch ActiveChans
         ObjSigMF.core_0x3A_capture{1,3}.PFP_0x3A_channel = ActiveIdx(3);
         ObjSigMF.core_0x3A_capture{1,3}.PFP_0x3A_length = S1.TimeTrace.TraceLength;
         % Line below removes unused core:capture entires
-        ObjSigMF.core_0x3A_capture = {ObjSigMF.core_0x3A_capture{1,1},...
-            ObjSigMF.core_0x3A_capture{1,2},ObjSigMF.core_0x3A_capture{1,3}};
+     %   ObjSigMF.core_0x3A_capture = {ObjSigMF.core_0x3A_capture{1,1},...
+     %       ObjSigMF.core_0x3A_capture{1,2},ObjSigMF.core_0x3A_capture{1,3}};
         
     case 4
         ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_sample_start = 0;
@@ -206,9 +206,9 @@ switch ActiveChans
         ObjSigMF.core_0x3A_capture{1,4}.PFP_0x3A_channel = ActiveIdx(4);
         ObjSigMF.core_0x3A_capture{1,4}.PFP_0x3A_length = S1.TimeTrace.TraceLength;
         % Line below removes unused core:capture entires
-        ObjSigMF.core_0x3A_capture = {ObjSigMF.core_0x3A_capture{1,1},...
-            ObjSigMF.core_0x3A_capture{1,2},ObjSigMF.core_0x3A_capture{1,3},...
-            ObjSigMF.core_0x3A_capture{1,4}};
+%         ObjSigMF.core_0x3A_capture = {ObjSigMF.core_0x3A_capture{1,1},...
+%             ObjSigMF.core_0x3A_capture{1,2},ObjSigMF.core_0x3A_capture{1,3},...
+%             ObjSigMF.core_0x3A_capture{1,4}};
 end
 
 

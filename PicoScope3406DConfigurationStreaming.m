@@ -217,7 +217,7 @@ function AcquireTrace_Callback(hObject, eventdata, handles)
             legend show;
     end
     
-    ylabel('Voltage (V)');
+    ylabel('Voltage (mV)');
     drawnow;
     
     setappdata(0,'S1',S1);
