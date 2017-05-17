@@ -151,39 +151,69 @@ switch ActiveChans
         ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_sample_rate = S1.TimeTrace.SampleFreq;
         ObjSigMF.core_0x3A_capture{1,1}.PFP_0x3A_channel = ActiveIdx(1);
         ObjSigMF.core_0x3A_capture{1,1}.PFP_0x3A_length = N;
-        % Line below removes unused core:capture entires
-    %    ObjSigMF.core_0x3A_capture = ObjSigMF.core_0x3A_capture{1,1};
+        ObjSigMF.core_0x3A_capture{1,2} = [];
+        ObjSigMF.core_0x3A_capture{1,3} = [];
+        ObjSigMF.core_0x3A_capture{1,4} = [];
+        ObjSigMF.core_0x3A_capture = ObjSigMF.core_0x3A_capture(~cellfun('isempty',ObjSigMF.core_0x3A_capture));
         
+        ObjSigMF.core_0x3A_annotations{1,1}.core_0x3A_sample_start = 0 ;
+        ObjSigMF.core_0x3A_annotations{1,1}.core_0x3A_sample_count = N ;
+        ObjSigMF.core_0x3A_annotations{1,2} = [];
+        ObjSigMF.core_0x3A_annotations{1,3} = [];
+        ObjSigMF.core_0x3A_annotations{1,4} = [];
+        ObjSigMF.core_0x3A_annotations = ObjSigMF.core_0x3A_annotations(~cellfun('isempty',ObjSigMF.core_0x3A_annotations));
+
     case 2
         ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_sample_start = 0;
         ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_sample_rate = S1.TimeTrace.SampleFreq;
         ObjSigMF.core_0x3A_capture{1,1}.PFP_0x3A_channel = ActiveIdx(1);
         ObjSigMF.core_0x3A_capture{1,1}.PFP_0x3A_length = S1.TimeTrace.TraceLength;
         
+        ObjSigMF.core_0x3A_annotations{1,1}.core_0x3A_sample_start = 0 ;
+        ObjSigMF.core_0x3A_annotations{1,1}.core_0x3A_sample_count = N ;
+
         ObjSigMF.core_0x3A_capture{1,2}.core_0x3A_sample_start = N;
         ObjSigMF.core_0x3A_capture{1,2}.core_0x3A_sample_rate = S1.TimeTrace.SampleFreq;
         ObjSigMF.core_0x3A_capture{1,2}.PFP_0x3A_channel = ActiveIdx(2);
         ObjSigMF.core_0x3A_capture{1,2}.PFP_0x3A_length = S1.TimeTrace.TraceLength;
-        % Line below removes unused core:capture entires
-    %    ObjSigMF.core_0x3A_capture = {ObjSigMF.core_0x3A_capture{1,1},ObjSigMF.core_0x3A_capture{1,2}};
+        
+        ObjSigMF.core_0x3A_annotations{1,2}.core_0x3A_sample_start = 0 ;
+        ObjSigMF.core_0x3A_annotations{1,2}.core_0x3A_sample_count = N ;
+
+        ObjSigMF.core_0x3A_capture{1,3} = [];
+        ObjSigMF.core_0x3A_capture{1,4} = [];
+        
+        ObjSigMF.core_0x3A_capture = ObjSigMF.core_0x3A_capture(~cellfun('isempty',ObjSigMF.core_0x3A_capture));
+        
     case 3
         ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_sample_start = 0;
         ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_sample_rate = S1.TimeTrace.SampleFreq;
         ObjSigMF.core_0x3A_capture{1,1}.PFP_0x3A_channel = ActiveIdx(1);
         ObjSigMF.core_0x3A_capture{1,1}.PFP_0x3A_length = S1.TimeTrace.TraceLength;
 
+        ObjSigMF.core_0x3A_annotations{1,1}.core_0x3A_sample_start = 0 ;
+        ObjSigMF.core_0x3A_annotations{1,1}.core_0x3A_sample_count = N;
+
+        
         ObjSigMF.core_0x3A_capture{1,2}.core_0x3A_sample_start = N;
         ObjSigMF.core_0x3A_capture{1,2}.core_0x3A_sample_rate = S1.TimeTrace.SampleFreq;
         ObjSigMF.core_0x3A_capture{1,2}.PFP_0x3A_channel = ActiveIdx(2);
         ObjSigMF.core_0x3A_capture{1,2}.PFP_0x3A_length = S1.TimeTrace.TraceLength;
 
+        ObjSigMF.core_0x3A_annotations{1,2}.core_0x3A_sample_start = 0 ;
+        ObjSigMF.core_0x3A_annotations{1,2}.core_0x3A_sample_count = N;
+
         ObjSigMF.core_0x3A_capture{1,3}.core_0x3A_sample_start = 2*N;
         ObjSigMF.core_0x3A_capture{1,3}.core_0x3A_sample_rate = S1.TimeTrace.SampleFreq;
         ObjSigMF.core_0x3A_capture{1,3}.PFP_0x3A_channel = ActiveIdx(3);
         ObjSigMF.core_0x3A_capture{1,3}.PFP_0x3A_length = S1.TimeTrace.TraceLength;
-        % Line below removes unused core:capture entires
-     %   ObjSigMF.core_0x3A_capture = {ObjSigMF.core_0x3A_capture{1,1},...
-     %       ObjSigMF.core_0x3A_capture{1,2},ObjSigMF.core_0x3A_capture{1,3}};
+
+        ObjSigMF.core_0x3A_annotations{1,3}.core_0x3A_sample_start = 0 ;
+        ObjSigMF.core_0x3A_annotations{1,3}.core_0x3A_sample_count = N;
+
+        
+        ObjSigMF.core_0x3A_capture{1,4} = [];
+        ObjSigMF.core_0x3A_capture = ObjSigMF.core_0x3A_capture(~cellfun('isempty',ObjSigMF.core_0x3A_capture));
         
     case 4
         ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_sample_start = 0;
@@ -191,24 +221,34 @@ switch ActiveChans
         ObjSigMF.core_0x3A_capture{1,1}.PFP_0x3A_channel = ActiveIdx(1);
         ObjSigMF.core_0x3A_capture{1,1}.PFP_0x3A_length = S1.TimeTrace.TraceLength;
         
+        ObjSigMF.core_0x3A_annotations{1,1}.core_0x3A_sample_start = 0 ;
+        ObjSigMF.core_0x3A_annotations{1,1}.core_0x3A_sample_count = N;
+
+        
         ObjSigMF.core_0x3A_capture{1,2}.core_0x3A_sample_start = N;
         ObjSigMF.core_0x3A_capture{1,2}.core_0x3A_sample_rate = S1.TimeTrace.SampleFreq;
         ObjSigMF.core_0x3A_capture{1,2}.PFP_0x3A_channel = ActiveIdx(2);
         ObjSigMF.core_0x3A_capture{1,2}.PFP_0x3A_length = S1.TimeTrace.TraceLength;
+        
+        ObjSigMF.core_0x3A_annotations{1,2}.core_0x3A_sample_start = 0 ;
+        ObjSigMF.core_0x3A_annotations{1,2}.core_0x3A_sample_count = N;
         
         ObjSigMF.core_0x3A_capture{1,3}.core_0x3A_sample_start = 2*N;
         ObjSigMF.core_0x3A_capture{1,3}.core_0x3A_sample_rate = S1.TimeTrace.SampleFreq;
         ObjSigMF.core_0x3A_capture{1,3}.PFP_0x3A_channel = ActiveIdx(3);
         ObjSigMF.core_0x3A_capture{1,3}.PFP_0x3A_length = S1.TimeTrace.TraceLength;
         
+        ObjSigMF.core_0x3A_annotations{1,3}.core_0x3A_sample_start = 0 ;
+        ObjSigMF.core_0x3A_annotations{1,3}.core_0x3A_sample_count = N;
+
         ObjSigMF.core_0x3A_capture{1,4}.core_0x3A_sample_start = 3*N;
         ObjSigMF.core_0x3A_capture{1,4}.core_0x3A_sample_rate = S1.TimeTrace.SampleFreq;
         ObjSigMF.core_0x3A_capture{1,4}.PFP_0x3A_channel = ActiveIdx(4);
         ObjSigMF.core_0x3A_capture{1,4}.PFP_0x3A_length = S1.TimeTrace.TraceLength;
-        % Line below removes unused core:capture entires
-%         ObjSigMF.core_0x3A_capture = {ObjSigMF.core_0x3A_capture{1,1},...
-%             ObjSigMF.core_0x3A_capture{1,2},ObjSigMF.core_0x3A_capture{1,3},...
-%             ObjSigMF.core_0x3A_capture{1,4}};
+        
+        ObjSigMF.core_0x3A_annotations{1,4}.core_0x3A_sample_start = 0 ;
+        ObjSigMF.core_0x3A_annotations{1,4}.core_0x3A_sample_count = N;
+
 end
 
 
@@ -323,7 +363,7 @@ for StateIdx = 0:S1.DataCollectionParams.NumStates-1
                 legend show;
         end
         
-        ylabel('Voltage (V)');
+        ylabel('Voltage (mV)');
         drawnow;
     end
 end

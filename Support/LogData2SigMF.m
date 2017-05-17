@@ -43,43 +43,90 @@ switch S1.ActiveChans
         ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_sample_start = 0;
         ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_time = char(DateTime);
         ObjSigMF.core_0x3A_capture{1,1}.PFP_0x3A_length = length(traces{1,1});
+        % annotations
+        ObjSigMF.core_0x3A_annotations{1,1}.core_0x3A_sample_start = 0 ;
+        ObjSigMF.core_0x3A_annotations{1,1}.core_0x3A_sample_count = length(traces{1,1}) ;
+        ObjSigMF.core_0x3A_annotations{1,2} = [];
+        ObjSigMF.core_0x3A_annotations{1,3} = [];
+        ObjSigMF.core_0x3A_annotations{1,4} = [];
+        ObjSigMF.core_0x3A_annotations = ObjSigMF.core_0x3A_annotations(~cellfun('isempty',ObjSigMF.core_0x3A_annotations));
+
 
     case 2
         ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_sample_start = 0;
         ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_time = char(DateTime);
         ObjSigMF.core_0x3A_capture{1,1}.PFP_0x3A_length = length(traces{1,1});
 
-        ObjSigMF.core_0x3A_capture{1,2}.core_0x3A_sample_start = length(traces{1,1});
+        ObjSigMF.core_0x3A_annotations{1,1}.core_0x3A_sample_start = 0 ;
+        ObjSigMF.core_0x3A_annotations{1,1}.core_0x3A_sample_count = length(traces{1,1}) ;
+
+        ObjSigMF.core_0x3A_capture{1,2}.core_0x3A_sample_start = length(traces{1,2});
         ObjSigMF.core_0x3A_capture{1,2}.core_0x3A_time = char(DateTime);
         ObjSigMF.core_0x3A_capture{1,2}.PFP_0x3A_length = length(traces{1,2});
+
+        ObjSigMF.core_0x3A_annotations{1,2}.core_0x3A_sample_start = 0 ;
+        ObjSigMF.core_0x3A_annotations{1,2}.core_0x3A_sample_count = length(traces{1,2}) ;
+        
+        ObjSigMF.core_0x3A_annotations{1,3} = [];
+        ObjSigMF.core_0x3A_annotations{1,4} = [];
+        ObjSigMF.core_0x3A_annotations = ObjSigMF.core_0x3A_annotations(~cellfun('isempty',ObjSigMF.core_0x3A_annotations));
+
+    
     case 3
         ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_sample_start = 0;
         ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_time = char(DateTime);
         ObjSigMF.core_0x3A_capture{1,1}.PFP_0x3A_length = length(traces{1,1});
         
-        ObjSigMF.core_0x3A_capture{1,2}.core_0x3A_sample_start = length(traces{1,1});
-        ObjSigMF.core_0x3A_capture{1,2}.core_0x3A_time = char(DateTime);
-        ObjSigMF.core_0x3A_capture{1,2}.PFP_0x3A_length = length(traces{1,2});
-        
-        ObjSigMF.core_0x3A_capture{1,3}.core_0x3A_sample_start = length(traces{1,1})+length(traces{1,2});
-        ObjSigMF.core_0x3A_capture{1,3}.core_0x3A_time = char(DateTime);
-        ObjSigMF.core_0x3A_capture{1,3}.PFP_0x3A_length = length(traces{1,3});
-    case 4
-        ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_sample_start = 0;
-        ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_time = char(DateTime);
-        ObjSigMF.core_0x3A_capture{1,1}.PFP_0x3A_length = length(traces{1,1});
+        ObjSigMF.core_0x3A_annotations{1,1}.core_0x3A_sample_start = 0 ;
+        ObjSigMF.core_0x3A_annotations{1,1}.core_0x3A_sample_count = length(traces{1,1}) ;
 
         ObjSigMF.core_0x3A_capture{1,2}.core_0x3A_sample_start = length(traces{1,1});
         ObjSigMF.core_0x3A_capture{1,2}.core_0x3A_time = char(DateTime);
         ObjSigMF.core_0x3A_capture{1,2}.PFP_0x3A_length = length(traces{1,2});
         
+        ObjSigMF.core_0x3A_annotations{1,2}.core_0x3A_sample_start = 0 ;
+        ObjSigMF.core_0x3A_annotations{1,2}.core_0x3A_sample_count = length(traces{1,2}) ;
+
         ObjSigMF.core_0x3A_capture{1,3}.core_0x3A_sample_start = length(traces{1,1})+length(traces{1,2});
         ObjSigMF.core_0x3A_capture{1,3}.core_0x3A_time = char(DateTime);
         ObjSigMF.core_0x3A_capture{1,3}.PFP_0x3A_length = length(traces{1,3});
         
+        ObjSigMF.core_0x3A_annotations{1,3}.core_0x3A_sample_start = 0 ;
+        ObjSigMF.core_0x3A_annotations{1,3}.core_0x3A_sample_count = length(traces{1,3}) ;
+
+        ObjSigMF.core_0x3A_annotations{1,4} = [];
+        ObjSigMF.core_0x3A_annotations = ObjSigMF.core_0x3A_annotations(~cellfun('isempty',ObjSigMF.core_0x3A_annotations));
+
+    case 4
+        ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_sample_start = 0;
+        ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_time = char(DateTime);
+        ObjSigMF.core_0x3A_capture{1,1}.PFP_0x3A_length = length(traces{1,1});
+
+        ObjSigMF.core_0x3A_annotations{1,1}.core_0x3A_sample_start = 0 ;
+        ObjSigMF.core_0x3A_annotations{1,1}.core_0x3A_sample_count = length(traces{1,1}) ;
+
+        ObjSigMF.core_0x3A_capture{1,2}.core_0x3A_sample_start = length(traces{1,1});
+        ObjSigMF.core_0x3A_capture{1,2}.core_0x3A_time = char(DateTime);
+        ObjSigMF.core_0x3A_capture{1,2}.PFP_0x3A_length = length(traces{1,2});
+        
+        ObjSigMF.core_0x3A_annotations{1,2}.core_0x3A_sample_start = 0 ;
+        ObjSigMF.core_0x3A_annotations{1,2}.core_0x3A_sample_count = length(traces{1,2}) ;
+
+        ObjSigMF.core_0x3A_capture{1,3}.core_0x3A_sample_start = length(traces{1,1})+length(traces{1,2});
+        ObjSigMF.core_0x3A_capture{1,3}.core_0x3A_time = char(DateTime);
+        ObjSigMF.core_0x3A_capture{1,3}.PFP_0x3A_length = length(traces{1,3});
+        
+        ObjSigMF.core_0x3A_annotations{1,3}.core_0x3A_sample_start = 0 ;
+        ObjSigMF.core_0x3A_annotations{1,3}.core_0x3A_sample_count = length(traces{1,3}) ;
+
+        
         ObjSigMF.core_0x3A_capture{1,4}.core_0x3A_sample_start = length(traces{1,1})+length(traces{1,2})+ length(traces{1,2});
         ObjSigMF.core_0x3A_capture{1,4}.core_0x3A_time = char(DateTime);
         ObjSigMF.core_0x3A_capture{1,4}.PFP_0x3A_length = length(traces{1,4});
+        
+        ObjSigMF.core_0x3A_annotations{1,4}.core_0x3A_sample_start = 0 ;
+        ObjSigMF.core_0x3A_annotations{1,4}.core_0x3A_sample_count = length(traces{1,4}) ;
+
 end
 
 %        DateTime = datetime('now','Timezone','local','Format','yyyy-MM-dd''T''HH:mm:ss,SSSSXXX');

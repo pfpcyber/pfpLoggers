@@ -91,11 +91,13 @@ if exist(S1.DataPaths.DataStorage, 'dir')% || exist(S2.DataPaths.SigMF, 'dir')
     if ~isempty(d1)
         msg = sprintf('Trace files found in %s.\n\nOK to delete?', S1.DataPaths.DataStorage);
         button = questdlg(msg,  'Folder Not Empty', ...
-            'Yes', 'Cancel', 'Cancel');
+            'Yes', 'No', 'Cancel', 'Cancel');
         switch (button)
             case 'Yes'
                 [status, message, messageid] = rmdir(S1.DataPaths.DataStorage, 's');
                 mkdir(S1.DataPaths.DataStorage);
+            case 'No'
+                
             otherwise
                 return
         end
@@ -125,42 +127,21 @@ switch S1.ActiveChans
     case 1
         ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_sample_rate = S1.TimeTrace.SampleFreq;
         ObjSigMF.core_0x3A_capture{1,1}.PFP_0x3A_channel = ActiveIdx(1);
-        % Line below removes unused core:capture entires
-      %  ObjSigMF.core_0x3A_capture = ObjSigMF.core_0x3A_capture{1,1};
-      
-        ObjSigMF.core_0x3A_capture{1,2}.core_0x3A_sample_rate = -1;
-        ObjSigMF.core_0x3A_capture{1,2}.PFP_0x3A_channel = -1;
-        ObjSigMF.core_0x3A_capture{1,2}.core_0x3A_sample_start = -1;
-        ObjSigMF.core_0x3A_capture{1,2}.PFP_0x3A_length = -1;
-        
-        ObjSigMF.core_0x3A_capture{1,3}.core_0x3A_sample_rate = -1;
-        ObjSigMF.core_0x3A_capture{1,3}.PFP_0x3A_channel = -1;
-        ObjSigMF.core_0x3A_capture{1,3}.core_0x3A_sample_start = -1;
-        ObjSigMF.core_0x3A_capture{1,3}.PFP_0x3A_length = -1;
-        
-        ObjSigMF.core_0x3A_capture{1,4}.core_0x3A_sample_rate = -1;
-        ObjSigMF.core_0x3A_capture{1,4}.PFP_0x3A_channel = -1;
-        ObjSigMF.core_0x3A_capture{1,4}.core_0x3A_sample_start = -1;
-        ObjSigMF.core_0x3A_capture{1,4}.PFP_0x3A_length = -1;
-        
+        ObjSigMF.core_0x3A_capture{1,2} = [];
+        ObjSigMF.core_0x3A_capture{1,3} = [];
+        ObjSigMF.core_0x3A_capture{1,4} = [];
+        ObjSigMF.core_0x3A_capture = ObjSigMF.core_0x3A_capture(~cellfun('isempty',ObjSigMF.core_0x3A_capture));
     case 2
         ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_sample_rate = S1.TimeTrace.SampleFreq;
         ObjSigMF.core_0x3A_capture{1,1}.PFP_0x3A_channel = ActiveIdx(1);
         
         ObjSigMF.core_0x3A_capture{1,2}.core_0x3A_sample_rate = S1.TimeTrace.SampleFreq;
         ObjSigMF.core_0x3A_capture{1,2}.PFP_0x3A_channel = ActiveIdx(2);
-        % Line below removes unused core:capture entires
-        %ObjSigMF.core_0x3A_capture = {ObjSigMF.core_0x3A_capture{1,1},ObjSigMF.core_0x3A_capture{1,2}};
         
-        ObjSigMF.core_0x3A_capture{1,3}.core_0x3A_sample_rate = -1;
-        ObjSigMF.core_0x3A_capture{1,3}.PFP_0x3A_channel = -1;
-        ObjSigMF.core_0x3A_capture{1,3}.core_0x3A_sample_start = -1;
-        ObjSigMF.core_0x3A_capture{1,3}.PFP_0x3A_length = -1;
+        ObjSigMF.core_0x3A_capture{1,3} = [];
+        ObjSigMF.core_0x3A_capture{1,4} = [];
         
-        ObjSigMF.core_0x3A_capture{1,4}.core_0x3A_sample_rate = -1;
-        ObjSigMF.core_0x3A_capture{1,4}.PFP_0x3A_channel = -1;
-        ObjSigMF.core_0x3A_capture{1,4}.core_0x3A_sample_start = -1;
-        ObjSigMF.core_0x3A_capture{1,4}.PFP_0x3A_length = -1;
+        ObjSigMF.core_0x3A_capture = ObjSigMF.core_0x3A_capture(~cellfun('isempty',ObjSigMF.core_0x3A_capture));
     case 3
         ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_sample_rate = S1.TimeTrace.SampleFreq;
         ObjSigMF.core_0x3A_capture{1,1}.PFP_0x3A_channel = ActiveIdx(1);
@@ -170,14 +151,10 @@ switch S1.ActiveChans
 
         ObjSigMF.core_0x3A_capture{1,3}.core_0x3A_sample_rate = S1.TimeTrace.SampleFreq;
         ObjSigMF.core_0x3A_capture{1,3}.PFP_0x3A_channel = ActiveIdx(3);
-        % Line below removes unused core:capture entires
-        %ObjSigMF.core_0x3A_capture = {ObjSigMF.core_0x3A_capture{1,1},...
-         %   ObjSigMF.core_0x3A_capture{1,2},ObjSigMF.core_0x3A_capture{1,3}};
-         
-        ObjSigMF.core_0x3A_capture{1,4}.core_0x3A_sample_rate = -1;
-        ObjSigMF.core_0x3A_capture{1,4}.PFP_0x3A_channel = -1;
-        ObjSigMF.core_0x3A_capture{1,4}.core_0x3A_sample_start = -1;
-        ObjSigMF.core_0x3A_capture{1,4}.PFP_0x3A_length = -1;
+
+        ObjSigMF.core_0x3A_capture{1,4} = [];
+        ObjSigMF.core_0x3A_capture = ObjSigMF.core_0x3A_capture(~cellfun('isempty',ObjSigMF.core_0x3A_capture));
+
     case 4
         ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_sample_rate = S1.TimeTrace.SampleFreq;
         ObjSigMF.core_0x3A_capture{1,1}.PFP_0x3A_channel = ActiveIdx(1);
@@ -190,10 +167,6 @@ switch S1.ActiveChans
         
         ObjSigMF.core_0x3A_capture{1,4}.core_0x3A_sample_rate = S1.TimeTrace.SampleFreq;
         ObjSigMF.core_0x3A_capture{1,4}.PFP_0x3A_channel = ActiveIdx(4);
-        % Line below removes unused core:capture entires
-        %ObjSigMF.core_0x3A_capture = {ObjSigMF.core_0x3A_capture{1,1},...
-         %   ObjSigMF.core_0x3A_capture{1,2},ObjSigMF.core_0x3A_capture{1,3},...
-         %   ObjSigMF.core_0x3A_capture{1,4}};
 end
 
 
@@ -284,7 +257,7 @@ while(hasAutoStopped == false && getStreamingLatestValues == 0)
         clear lastValuePosn;
         clear startIndex;
         Flag = LogData2SigMF( S1,ObjSigMF,TotalTraceCount,Opt );
-        set(handles.SequenceNumber,'String',[num2str(TotalTraceCount), ' %']);
+        set(handles.SequenceNumber,'String',[num2str(TotalTraceCount)]);
         TotalTraceCount = TotalTraceCount +1;
         
     end
