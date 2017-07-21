@@ -4,7 +4,7 @@ function varargout = Pico3406DLogger(varargin)
 % Derek Liu
 % 10/30/14
 
-% Last Modified by GUIDE v2.5 09-May-2017 13:58:55
+% Last Modified by GUIDE v2.5 19-Jun-2017 13:44:18
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -87,8 +87,53 @@ function PicoScope3406DStreamModeDataCollection_Callback(hObject, eventdata, han
 PicoScope3406DDataCollectionStreaming();
 
 
+% --- Executes on button press in pushbutton10.
+function zipFiles_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton10 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+% Turn the interface off for processing.
+    InterfaceObj=findobj(handle(handles.output),'Enable','on');
+    set(InterfaceObj,'Enable','off');
+zipFiles();
+    % Turn the interface back on
+    set(InterfaceObj,'Enable','on');
+    
+
+% --- Executes on button press in pushbutton11.
+function sendFiles_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton11 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
 
 
+S1 = getappdata(0,'S1');
+if isempty(S1) || ~isfield(S1,'DataPaths') || ~isfield(S1.DataPaths,'DataStorage')
+    dataPath = ''; 
+else
+    dataPath = S1.DataPaths.DataStorage; %Directory where the zipfile should be 
+end
+
+[fileName, pathName] = uigetfile([dataPath,'*.zip'],'Select the zip file to send');
+
+  
+if fileName 
+    % Turn the interface off for processing.
+    InterfaceObj=findobj(handle(handles.output),'Enable','on');
+    set(InterfaceObj,'Enable','off');
+    
+    fullFileName = fullfile(pathName,fileName);
+    FTP.filePath = fullFileName;
+    setappdata(0,'FTP',FTP);
+    SendFiles();
+    
+    % Need to pause or else gui_mainfcn will kick the main interface back
+    % on.
+    pause(3)
+    % Turn the interface back on
+    set(InterfaceObj,'Enable','on');
+    drawnow;
+end
 
 
 
