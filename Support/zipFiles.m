@@ -2,7 +2,7 @@ function success = zipFiles()
 % Zip all .meta and .data files in the specified folder
 %
 % Joseph Messou
-% 06/19/2017
+% 06/19/2017  
 
 %Ask user for the directory with all sigMF files
 S1 = getappdata(0,'S1');

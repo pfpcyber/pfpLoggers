@@ -168,7 +168,7 @@ catch err
         delete(ftph);
         clear('h');
     end    
-    uiwait(msgbox(err.message));
+    uiwait(msgbox(err.message));  
 end
 
 
