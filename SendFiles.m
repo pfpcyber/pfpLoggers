@@ -168,7 +168,11 @@ catch err
         delete(ftph);
         clear('h');
     end    
+<<<<<<< HEAD
     uiwait(msgbox(err.message));  
+=======
+    uiwait(msgbox(err.message));
+>>>>>>> 18a86fb3b4c4dba0052ae0870a4d02c302f18dda
 end
 
 
