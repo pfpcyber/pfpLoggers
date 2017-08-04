@@ -1,9 +1,9 @@
 {
 	"daq_global": {
-		"DataPath": "C:\\Users\\PFP\\Desktop\\New folder\\",
-		"InitialSigMF": "C:\\Users\\PFP\\Desktop\\pico3406dloggermc\\Support\\InitialMeta.meta",
-		"NumTraces": 200,
-		"NumStates": 4,
+		"DataPath": "C:\\Users\\PFP\\Desktop\\LADS\\30 Board 3 States Traces\\Arduino1\\",
+		"InitialSigMF": "C:\\Users\\PFP\\Desktop\\LADS\\30 Board 3 States Traces\\Meta\\InitialMeta1.meta",
+		"NumTraces": 100,
+		"NumStates": 3,
 		"EnableDAQDevice": "Pico3406D"
 	},
 	"rp_capture": {
@@ -33,14 +33,14 @@
 		"ScopePicoScopeModel": 0,
 		"ScopeSerialNumber": "CW690/010",
 		"AcquisitionMode": 0,
-		"SampleFreq": 8,
-		"TraceLength": 1,
+		"SampleFreq": 0,
+		"TraceLength": 200000,
 		"ChanAEnabled": 1,
 		"ChanAVerticalRange": 6,
 		"ChanACoupling": 1,
 		"ChanAAnalogOffsetVolts": 0,
 		"ChanBEnabled": 0,
-		"ChanBVerticalRange": 6,
+		"ChanBVerticalRange": 8,
 		"ChanBCoupling": 1,
 		"ChanBAnalogOffsetVolts": 0,
 		"ChanCEnabled": 0,
@@ -52,8 +52,8 @@
 		"ChanDCoupling": 0,
 		"ChanDAnalogOffsetVolts": 0,
 		"TriggerEnable": 1,
-		"TriggerSource": 0,
-		"TriggerLevel": 0.05,
+		"TriggerSource": 4,
+		"TriggerLevel": 3,
 		"TriggerSlope": 0,
 		"TriggerDelay": 0,
 		"AutoTriggerTimeoutms": 1000
