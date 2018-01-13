@@ -276,7 +276,8 @@ for StateIdx = 0:S1.DataCollectionParams.NumStates-1
         end
         
         
-        ObjSigMF.core_0x3A_global.core_0x3A_sha512 = DataHash([traces{1,1}; traces{1,2}; traces{1,3} ;traces{1,4}],Opt);
+        ObjSigMF.core_0x3A_global.core_0x3A_sha512 = DataHash([single(traces{1,1}); single(traces{1,2});...
+            single(traces{1,3}) ;single(traces{1,4})],Opt);
         % SigMF meta data
         DateTime = datetime('now','Timezone','local','Format','yyyy-MM-dd''T''HH:mm:ss,SSSSXXX');
 
