@@ -148,7 +148,7 @@ N = S1.TimeTrace.TraceLength;
 switch ActiveChans
     case 1
         ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_sample_start = 0;
-        ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_sample_rate = S1.TimeTrace.SampleFreq;
+        ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_sample_rate = S1.P2Scan.FsDefaults(S1.TimeTrace.SampleFreq+1);
         ObjSigMF.core_0x3A_capture{1,1}.PFP_0x3A_channel = ActiveIdx(1);
         ObjSigMF.core_0x3A_capture{1,1}.PFP_0x3A_length = N;
         ObjSigMF.core_0x3A_capture{1,2} = [];
@@ -165,7 +165,7 @@ switch ActiveChans
 
     case 2
         ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_sample_start = 0;
-        ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_sample_rate = S1.TimeTrace.SampleFreq;
+        ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_sample_rate = S1.P2Scan.FsDefaults(S1.TimeTrace.SampleFreq+1);
         ObjSigMF.core_0x3A_capture{1,1}.PFP_0x3A_channel = ActiveIdx(1);
         ObjSigMF.core_0x3A_capture{1,1}.PFP_0x3A_length = S1.TimeTrace.TraceLength;
         
@@ -173,7 +173,7 @@ switch ActiveChans
         ObjSigMF.core_0x3A_annotations{1,1}.core_0x3A_sample_count = N ;
 
         ObjSigMF.core_0x3A_capture{1,2}.core_0x3A_sample_start = N;
-        ObjSigMF.core_0x3A_capture{1,2}.core_0x3A_sample_rate = S1.TimeTrace.SampleFreq;
+        ObjSigMF.core_0x3A_capture{1,2}.core_0x3A_sample_rate = S1.P2Scan.FsDefaults(S1.TimeTrace.SampleFreq+1);
         ObjSigMF.core_0x3A_capture{1,2}.PFP_0x3A_channel = ActiveIdx(2);
         ObjSigMF.core_0x3A_capture{1,2}.PFP_0x3A_length = S1.TimeTrace.TraceLength;
         
@@ -187,7 +187,7 @@ switch ActiveChans
         
     case 3
         ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_sample_start = 0;
-        ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_sample_rate = S1.TimeTrace.SampleFreq;
+        ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_sample_rate = S1.P2Scan.FsDefaults(S1.TimeTrace.SampleFreq+1);
         ObjSigMF.core_0x3A_capture{1,1}.PFP_0x3A_channel = ActiveIdx(1);
         ObjSigMF.core_0x3A_capture{1,1}.PFP_0x3A_length = S1.TimeTrace.TraceLength;
 
@@ -196,7 +196,7 @@ switch ActiveChans
 
         
         ObjSigMF.core_0x3A_capture{1,2}.core_0x3A_sample_start = N;
-        ObjSigMF.core_0x3A_capture{1,2}.core_0x3A_sample_rate = S1.TimeTrace.SampleFreq;
+        ObjSigMF.core_0x3A_capture{1,2}.core_0x3A_sample_rate = S1.P2Scan.FsDefaults(S1.TimeTrace.SampleFreq+1);
         ObjSigMF.core_0x3A_capture{1,2}.PFP_0x3A_channel = ActiveIdx(2);
         ObjSigMF.core_0x3A_capture{1,2}.PFP_0x3A_length = S1.TimeTrace.TraceLength;
 
@@ -204,7 +204,7 @@ switch ActiveChans
         ObjSigMF.core_0x3A_annotations{1,2}.core_0x3A_sample_count = N;
 
         ObjSigMF.core_0x3A_capture{1,3}.core_0x3A_sample_start = 2*N;
-        ObjSigMF.core_0x3A_capture{1,3}.core_0x3A_sample_rate = S1.TimeTrace.SampleFreq;
+        ObjSigMF.core_0x3A_capture{1,3}.core_0x3A_sample_rate = S1.P2Scan.FsDefaults(S1.TimeTrace.SampleFreq+1);
         ObjSigMF.core_0x3A_capture{1,3}.PFP_0x3A_channel = ActiveIdx(3);
         ObjSigMF.core_0x3A_capture{1,3}.PFP_0x3A_length = S1.TimeTrace.TraceLength;
 
@@ -217,7 +217,7 @@ switch ActiveChans
         
     case 4
         ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_sample_start = 0;
-        ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_sample_rate = S1.TimeTrace.SampleFreq;
+        ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_sample_rate = S1.P2Scan.FsDefaults(S1.TimeTrace.SampleFreq+1);
         ObjSigMF.core_0x3A_capture{1,1}.PFP_0x3A_channel = ActiveIdx(1);
         ObjSigMF.core_0x3A_capture{1,1}.PFP_0x3A_length = S1.TimeTrace.TraceLength;
         
@@ -226,7 +226,7 @@ switch ActiveChans
 
         
         ObjSigMF.core_0x3A_capture{1,2}.core_0x3A_sample_start = N;
-        ObjSigMF.core_0x3A_capture{1,2}.core_0x3A_sample_rate = S1.TimeTrace.SampleFreq;
+        ObjSigMF.core_0x3A_capture{1,2}.core_0x3A_sample_rate = S1.P2Scan.FsDefaults(S1.TimeTrace.SampleFreq+1);
         ObjSigMF.core_0x3A_capture{1,2}.PFP_0x3A_channel = ActiveIdx(2);
         ObjSigMF.core_0x3A_capture{1,2}.PFP_0x3A_length = S1.TimeTrace.TraceLength;
         
@@ -234,7 +234,7 @@ switch ActiveChans
         ObjSigMF.core_0x3A_annotations{1,2}.core_0x3A_sample_count = N;
         
         ObjSigMF.core_0x3A_capture{1,3}.core_0x3A_sample_start = 2*N;
-        ObjSigMF.core_0x3A_capture{1,3}.core_0x3A_sample_rate = S1.TimeTrace.SampleFreq;
+        ObjSigMF.core_0x3A_capture{1,3}.core_0x3A_sample_rate = S1.P2Scan.FsDefaults(S1.TimeTrace.SampleFreq+1);
         ObjSigMF.core_0x3A_capture{1,3}.PFP_0x3A_channel = ActiveIdx(3);
         ObjSigMF.core_0x3A_capture{1,3}.PFP_0x3A_length = S1.TimeTrace.TraceLength;
         
@@ -242,7 +242,7 @@ switch ActiveChans
         ObjSigMF.core_0x3A_annotations{1,3}.core_0x3A_sample_count = N;
 
         ObjSigMF.core_0x3A_capture{1,4}.core_0x3A_sample_start = 3*N;
-        ObjSigMF.core_0x3A_capture{1,4}.core_0x3A_sample_rate = S1.TimeTrace.SampleFreq;
+        ObjSigMF.core_0x3A_capture{1,4}.core_0x3A_sample_rate = S1.P2Scan.FsDefaults(S1.TimeTrace.SampleFreq+1);
         ObjSigMF.core_0x3A_capture{1,4}.PFP_0x3A_channel = ActiveIdx(4);
         ObjSigMF.core_0x3A_capture{1,4}.PFP_0x3A_length = S1.TimeTrace.TraceLength;
         
@@ -309,7 +309,7 @@ for StateIdx = 0:S1.DataCollectionParams.NumStates-1
             '_',...
             num2str(DateTime.Hour,'%02d'),...
             num2str(DateTime.Minute,'%02d'),...
-            strrep(num2str(DateTime.Second,'%5.2f'), '.', '_')];
+            strrep(num2str(DateTime.Second,'%05.2f'), '.', '_')];
         DataFileName = [FileName '.data']; % Add .data extension
         DataFullPath = [S1.DataPaths.DataStorage DataFileName];
         MetaFileName = [FileName '.meta'];%  Add .meta extension
