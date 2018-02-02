@@ -181,6 +181,12 @@ newSamples          = 0; % Number of new samples returned from the driver.
 previousTotal       = 0; % The previous total number of samples.
 totalSamples        = 0; % Total samples captured by the device.
 startIndex          = 0; % Start index of data in the buffer returned.
+min_samples_to_store= 5e6; % minimum write block. The logger will wait to collect at least these samples before writting to file
+block_samples       = 0; % Counter for the samples being written in a block
+S1.P2Scan.pBufferChAFinal.Value = [];
+S1.P2Scan.pBufferChBFinal.Value = [];
+S1.P2Scan.pBufferChCFinal.Value = [];
+S1.P2Scan.pBufferChDFinal.Value = [];
 getStreamingLatestValues = 0; % OK
         
 [stopFig.f, stopFig.h] = stopButton();             
@@ -222,9 +228,10 @@ while(hasAutoStopped == false && getStreamingLatestValues == 0)
         totalSamples = totalSamples + newSamples;
         firstValuePosn = startIndex + 1;
         lastValuePosn = startIndex + newSamples;
+        block_samples = block_samples + newSamples;
         % Printing to console can slow down acquisition - use for debug
-        fprintf('New Samples: %d, startIndex: %d total: %d.\n', newSamples, startIndex, totalSamples);
-        fprintf('FirstValuePosn: %d, lastValuePosn: %d.\n\n', firstValuePosn, lastValuePosn);
+%         fprintf('New Samples: %d, startIndex: %d total: %d.\n', newSamples, startIndex, totalSamples);
+%         fprintf('FirstValuePosn: %d, lastValuePosn: %d.\n\n', firstValuePosn, lastValuePosn);
 
         % Position indices of data in buffer
        
@@ -232,33 +239,48 @@ while(hasAutoStopped == false && getStreamingLatestValues == 0)
         if isequal(S1.channelSettings(1).Enabled,true)
             voltage_range = S1.P2Scan.VerticalRangeDefaults(S1.channelSettings(1).Range);
             %       raw = get(S1.P2Scan.pBufferA, 'Value');
-            S1.P2Scan.pBufferChAFinal.Value = adc2mv(S1.P2Scan.pAppBufferChA.Value(firstValuePosn:lastValuePosn),voltage_range,S1.P2Scan.scope.maxADCValue);
+            S1.P2Scan.pBufferChAFinal.Value = [S1.P2Scan.pBufferChAFinal.Value; ...
+                adc2mv(S1.P2Scan.pAppBufferChA.Value(firstValuePosn:lastValuePosn),voltage_range,S1.P2Scan.scope.maxADCValue)];
         end
         
         if isequal(S1.channelSettings(2).Enabled,true)
             voltage_range = S1.P2Scan.VerticalRangeDefaults(S1.channelSettings(2).Range);
             %      raw = get(S1.P2Scan.pBufferB, 'Value');
-            S1.P2Scan.pBufferChBFinal.Value = adc2mv(S1.P2Scan.pAppBufferChB.Value(firstValuePosn:lastValuePosn),voltage_range,S1.P2Scan.scope.maxADCValue);
+            S1.P2Scan.pBufferChBFinal.Value = [S1.P2Scan.pBufferChBFinal.Value; ...
+                adc2mv(S1.P2Scan.pAppBufferChB.Value(firstValuePosn:lastValuePosn),voltage_range,S1.P2Scan.scope.maxADCValue)];
         end
         
         if isequal(S1.channelSettings(3).Enabled,true)
             voltage_range = S1.P2Scan.VerticalRangeDefaults(S1.channelSettings(3).Range);
             %     raw = get(S1.P2Scan.pBufferC, 'Value');
-            S1.P2Scan.pBufferChCFinal.Value = adc2mv(S1.P2Scan.pAppBufferChC.Value(firstValuePosn:lastValuePosn),voltage_range,S1.P2Scan.scope.maxADCValue);
+            S1.P2Scan.pBufferChCFinal.Value = [S1.P2Scan.pBufferChCFinal.Value; ...
+                adc2mv(S1.P2Scan.pAppBufferChC.Value(firstValuePosn:lastValuePosn),voltage_range,S1.P2Scan.scope.maxADCValue)];
         end
         
         if isequal(S1.channelSettings(4).Enabled,true)
             voltage_range = S1.P2Scan.VerticalRangeDefaults(S1.channelSettings(4).Range);
             %    raw = get(S1.P2Scan.pBufferD, 'Value');
-            S1.P2Scan.pBufferChDFinal.Value = adc2mv(S1.P2Scan.pAppBufferChD.Value(firstValuePosn:lastValuePosn),voltage_range,S1.P2Scan.scope.maxADCValue);
+            S1.P2Scan.pBufferChDFinal.Value = [S1.P2Scan.pBufferChDFinal.Value; ...
+                adc2mv(S1.P2Scan.pAppBufferChD.Value(firstValuePosn:lastValuePosn),voltage_range,S1.P2Scan.scope.maxADCValue)];
         end
         % Clear variables for use again
         clear firstValuePosn;
         clear lastValuePosn;
         clear startIndex;
-        Flag = LogData2SigMF( S1,ObjSigMF,TotalTraceCount,Opt );
-        set(handles.SequenceNumber,'String',[num2str(TotalTraceCount)]);
-        TotalTraceCount = TotalTraceCount +1;
+        
+        %add new samples to the buffer
+        
+        if (block_samples > min_samples_to_store)
+            disp(['Just sending file to write: ' num2str(TotalTraceCount)]);
+            Flag = LogData2SigMF( S1,ObjSigMF,TotalTraceCount,Opt );
+            set(handles.SequenceNumber,'String',[num2str(TotalTraceCount)]);
+            TotalTraceCount = TotalTraceCount +1;
+            S1.P2Scan.pBufferChAFinal.Value = [];
+            S1.P2Scan.pBufferChBFinal.Value = [];
+            S1.P2Scan.pBufferChCFinal.Value = [];
+            S1.P2Scan.pBufferChDFinal.Value = [];
+            block_samples = 0;
+        end
         
     end
     

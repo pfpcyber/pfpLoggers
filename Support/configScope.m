@@ -30,6 +30,7 @@ end
 % Get active channels
 
 ChanIdx = [0 1 2 3];
+% ChanIdx = [0 1];
 
 for idx = 1:length(ChanIdx)
    status  = invoke(S1.P2Scan.scope, 'ps3000aSetChannel', ChanIdx(idx), S1.channelSettings(idx).Enabled,...
