@@ -39,7 +39,8 @@ try
             'setAppAndDriverBuffers', 0, S1.P2Scan.pAppBufferChA,...
             S1.P2Scan.pDriverBufferChA, overviewBufferSize);
         
-        S1.P2Scan.pBufferChAFinal = libpointer('singlePtr', zeros(overviewBufferSize, 1, 'single'));
+%         S1.P2Scan.pBufferChAFinal = libpointer('singlePtr', zeros(overviewBufferSize, 1, 'single'));
+        S1.P2Scan.pBufferChAFinal = [];
         
     end
     
@@ -53,7 +54,8 @@ try
             'setAppAndDriverBuffers', 1, S1.P2Scan.pAppBufferChB,...
             S1.P2Scan.pDriverBufferChB, overviewBufferSize);
         
-        S1.P2Scan.pBufferChBFinal = libpointer('singlePtr', zeros(overviewBufferSize, 1, 'single'));
+%         S1.P2Scan.pBufferChBFinal = libpointer('singlePtr', zeros(overviewBufferSize, 1, 'single'));
+        S1.P2Scan.pBufferChBFinal = [];
 
     end
     
@@ -67,7 +69,8 @@ try
             'setAppAndDriverBuffers', 2, S1.P2Scan.pAppBufferChC,...
             S1.P2Scan.pDriverBufferChC, overviewBufferSize);
         
-            S1.P2Scan.pBufferChCFinal = libpointer('singlePtr', zeros(overviewBufferSize, 1, 'single'));
+%             S1.P2Scan.pBufferChCFinal = libpointer('singlePtr', zeros(overviewBufferSize, 1, 'single'));
+            S1.P2Scan.pBufferChCFinal = [];
     end
     
     if isequal(S1.channelSettings(4).Enabled,true)
@@ -80,7 +83,8 @@ try
             'setAppAndDriverBuffers', 3, S1.P2Scan.pAppBufferChD,...
             S1.P2Scan.pDriverBufferChD, overviewBufferSize);
         
-            S1.P2Scan.pBufferChAFinal = libpointer('singlePtr', zeros(overviewBufferSize, 1, 'single'));
+%             S1.P2Scan.pBufferChAFinal = libpointer('singlePtr', zeros(overviewBufferSize, 1, 'single'));
+            S1.P2Scan.pBufferChDFinal = [];
     end
     
     

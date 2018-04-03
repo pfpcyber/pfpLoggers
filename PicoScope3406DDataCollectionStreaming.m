@@ -232,7 +232,7 @@ while(hasAutoStopped == false && getStreamingLatestValues == 0)
         fprintf('FirstValuePosn: %d, lastValuePosn: %d.\n\n', firstValuePosn, lastValuePosn);
 
         % Position indices of data in buffer
-       
+        
         % Convert data values to milliVolts from the application buffers
         if isequal(S1.channelSettings(1).Enabled,true)
             voltage_range = S1.P2Scan.VerticalRangeDefaults(S1.channelSettings(1).Range);
@@ -261,7 +261,7 @@ while(hasAutoStopped == false && getStreamingLatestValues == 0)
         clear firstValuePosn;
         clear lastValuePosn;
         clear startIndex;
-       
+      
         Flag = LogData2SigMF( S1,ObjSigMF,TotalTraceCount,Opt );
         set(handles.SequenceNumber,'String',[num2str(TotalTraceCount)]);
         TotalTraceCount = TotalTraceCount +1;
