@@ -41,6 +41,7 @@ DateTime = datetime('now','Timezone','local','Format','yyyy-MM-dd''T''HH:mm:ss,S
 switch S1.ActiveChans
     case 1
         ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_sample_start = 0;
+        ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_sample_rate = S1.P2Scan.FsDefaults(S1.TimeTrace.SampleFreq+1);
         ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_time = char(DateTime);
         ObjSigMF.core_0x3A_capture{1,1}.PFP_0x3A_length = length(traces{1,1});
         % annotations
@@ -54,6 +55,7 @@ switch S1.ActiveChans
 
     case 2
         ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_sample_start = 0;
+        ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_sample_rate = S1.P2Scan.FsDefaults(S1.TimeTrace.SampleFreq+1);
         ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_time = char(DateTime);
         ObjSigMF.core_0x3A_capture{1,1}.PFP_0x3A_length = length(traces{1,1});
 
@@ -63,6 +65,8 @@ switch S1.ActiveChans
         ObjSigMF.core_0x3A_capture{1,2}.core_0x3A_sample_start = length(traces{1,2});
         ObjSigMF.core_0x3A_capture{1,2}.core_0x3A_time = char(DateTime);
         ObjSigMF.core_0x3A_capture{1,2}.PFP_0x3A_length = length(traces{1,2});
+        ObjSigMF.core_0x3A_capture{1,2}.core_0x3A_sample_rate = S1.P2Scan.FsDefaults(S1.TimeTrace.SampleFreq+1);
+
 
         ObjSigMF.core_0x3A_annotations{1,2}.core_0x3A_sample_start = 0 ;
         ObjSigMF.core_0x3A_annotations{1,2}.core_0x3A_sample_count = length(traces{1,2}) ;
@@ -74,6 +78,7 @@ switch S1.ActiveChans
     
     case 3
         ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_sample_start = 0;
+        ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_sample_rate = S1.P2Scan.FsDefaults(S1.TimeTrace.SampleFreq+1);
         ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_time = char(DateTime);
         ObjSigMF.core_0x3A_capture{1,1}.PFP_0x3A_length = length(traces{1,1});
         
@@ -83,6 +88,8 @@ switch S1.ActiveChans
         ObjSigMF.core_0x3A_capture{1,2}.core_0x3A_sample_start = length(traces{1,1});
         ObjSigMF.core_0x3A_capture{1,2}.core_0x3A_time = char(DateTime);
         ObjSigMF.core_0x3A_capture{1,2}.PFP_0x3A_length = length(traces{1,2});
+        ObjSigMF.core_0x3A_capture{1,2}.core_0x3A_sample_rate = S1.P2Scan.FsDefaults(S1.TimeTrace.SampleFreq+1);
+
         
         ObjSigMF.core_0x3A_annotations{1,2}.core_0x3A_sample_start = 0 ;
         ObjSigMF.core_0x3A_annotations{1,2}.core_0x3A_sample_count = length(traces{1,2}) ;
@@ -90,7 +97,8 @@ switch S1.ActiveChans
         ObjSigMF.core_0x3A_capture{1,3}.core_0x3A_sample_start = length(traces{1,1})+length(traces{1,2});
         ObjSigMF.core_0x3A_capture{1,3}.core_0x3A_time = char(DateTime);
         ObjSigMF.core_0x3A_capture{1,3}.PFP_0x3A_length = length(traces{1,3});
-        
+        ObjSigMF.core_0x3A_capture{1,3}.core_0x3A_sample_rate = S1.P2Scan.FsDefaults(S1.TimeTrace.SampleFreq+1);
+
         ObjSigMF.core_0x3A_annotations{1,3}.core_0x3A_sample_start = 0 ;
         ObjSigMF.core_0x3A_annotations{1,3}.core_0x3A_sample_count = length(traces{1,3}) ;
 
@@ -99,6 +107,7 @@ switch S1.ActiveChans
 
     case 4
         ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_sample_start = 0;
+        ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_sample_rate = S1.P2Scan.FsDefaults(S1.TimeTrace.SampleFreq+1);
         ObjSigMF.core_0x3A_capture{1,1}.core_0x3A_time = char(DateTime);
         ObjSigMF.core_0x3A_capture{1,1}.PFP_0x3A_length = length(traces{1,1});
 
@@ -108,6 +117,8 @@ switch S1.ActiveChans
         ObjSigMF.core_0x3A_capture{1,2}.core_0x3A_sample_start = length(traces{1,1});
         ObjSigMF.core_0x3A_capture{1,2}.core_0x3A_time = char(DateTime);
         ObjSigMF.core_0x3A_capture{1,2}.PFP_0x3A_length = length(traces{1,2});
+        ObjSigMF.core_0x3A_capture{1,2}.core_0x3A_sample_rate = S1.P2Scan.FsDefaults(S1.TimeTrace.SampleFreq+1);
+
         
         ObjSigMF.core_0x3A_annotations{1,2}.core_0x3A_sample_start = 0 ;
         ObjSigMF.core_0x3A_annotations{1,2}.core_0x3A_sample_count = length(traces{1,2}) ;
@@ -115,6 +126,8 @@ switch S1.ActiveChans
         ObjSigMF.core_0x3A_capture{1,3}.core_0x3A_sample_start = length(traces{1,1})+length(traces{1,2});
         ObjSigMF.core_0x3A_capture{1,3}.core_0x3A_time = char(DateTime);
         ObjSigMF.core_0x3A_capture{1,3}.PFP_0x3A_length = length(traces{1,3});
+        ObjSigMF.core_0x3A_capture{1,3}.core_0x3A_sample_rate = S1.P2Scan.FsDefaults(S1.TimeTrace.SampleFreq+1);
+
         
         ObjSigMF.core_0x3A_annotations{1,3}.core_0x3A_sample_start = 0 ;
         ObjSigMF.core_0x3A_annotations{1,3}.core_0x3A_sample_count = length(traces{1,3}) ;
@@ -123,7 +136,8 @@ switch S1.ActiveChans
         ObjSigMF.core_0x3A_capture{1,4}.core_0x3A_sample_start = length(traces{1,1})+length(traces{1,2})+ length(traces{1,2});
         ObjSigMF.core_0x3A_capture{1,4}.core_0x3A_time = char(DateTime);
         ObjSigMF.core_0x3A_capture{1,4}.PFP_0x3A_length = length(traces{1,4});
-        
+        ObjSigMF.core_0x3A_capture{1,4}.core_0x3A_sample_rate = S1.P2Scan.FsDefaults(S1.TimeTrace.SampleFreq+1);
+
         ObjSigMF.core_0x3A_annotations{1,4}.core_0x3A_sample_start = 0 ;
         ObjSigMF.core_0x3A_annotations{1,4}.core_0x3A_sample_count = length(traces{1,4}) ;
 
