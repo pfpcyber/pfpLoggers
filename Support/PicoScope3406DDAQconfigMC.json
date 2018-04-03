@@ -1,6 +1,6 @@
 {
 	"daq_global": {
-		"DataPath": "E:\\LoggerTesting\\TwoChannel\\",
+		"DataPath": "E:\\LoggerTesting\\TwoChannelLonger\\",
 		"InitialSigMF": "E:\\PFP_EngineeringInitiatives\\pfpLogger\\Support\\InitialMeta.meta",
 		"NumTraces": 50,
 		"NumStates": 5,

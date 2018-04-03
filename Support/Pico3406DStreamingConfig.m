@@ -10,6 +10,7 @@ try
     % If no trigger is set 'numPreTriggerSamples' is ignored
     set(S1.P2Scan.scope, 'numPreTriggerSamples', 0);
     set(S1.P2Scan.scope, 'numPostTriggerSamples', 250000);
+%    set(S1.P2Scan.scope, 'numPostTriggerSamples', 1000000);
     set(S1.P2Scan.scope.Streaming(1), 'streamingInterval', 1/S1.P2Scan.FsDefaults(S1.TimeTrace.SampleFreq+1));
     set(S1.P2Scan.scope.Streaming(1), 'autoStop', 0);
     

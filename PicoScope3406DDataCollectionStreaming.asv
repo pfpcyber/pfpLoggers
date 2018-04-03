@@ -186,7 +186,6 @@ getStreamingLatestValues = 0; % OK
 [stopFig.f, stopFig.h] = stopButton();             
 flag = 1; % Use flag variable to indicate if stop button has been clicked (0)
 setappdata(gcf, 'run', flag);
-newSampleT = 0;
 
 % Get data values as long as power status has not changed (check for STOP button push inside loop)
 while(hasAutoStopped == false && getStreamingLatestValues == 0)
@@ -216,19 +215,19 @@ while(hasAutoStopped == false && getStreamingLatestValues == 0)
     % This function indicates the number of samples returned from the driver and shows the
     % start index of the data in the buffer when collecting data in streaming mode.
     [newSamples, startIndex] = invoke(S1.P2Scan.scope.Streaming(1), 'availableData');
-    newSampleT = newSampleT + newSamples;
     
-    fprintf('New Samples(1): %d, startIndex(1): %d, newSampleT = %d.\n', newSamples, startIndex, newSampleT);
-    % To increase the number of samples written to file change the value in
-    % newSampleT == 250000, also change overviewBufferSize = 250000 in Pico3406DStreamingConfig.m;
-    if (newSampleT == 250000)
-        startIndex = 0;
+    
+    fprintf('New Samples: %d, startIndex: %d.\n', newSamples, startIndex);
+
+%    if (newSamples > 10000)
+    if (startIndex > 10000)
+        new
         previousTotal = totalSamples;
-        totalSamples = totalSamples + newSampleT;
+        totalSamples = totalSamples + newSamples;
         firstValuePosn = startIndex + 1;
-        lastValuePosn = startIndex + newSampleT;
+        lastValuePosn = startIndex + newSamples;
         % Printing to console can slow down acquisition - use for debug
-        fprintf('New SampleT: %d, startIndex: %d total: %d.\n', newSampleT, startIndex, totalSamples);
+        fprintf('New Samples: %d, startIndex: %d total: %d.\n', newSamples, startIndex, totalSamples);
         fprintf('FirstValuePosn: %d, lastValuePosn: %d.\n\n', firstValuePosn, lastValuePosn);
 
         % Position indices of data in buffer
@@ -261,11 +260,9 @@ while(hasAutoStopped == false && getStreamingLatestValues == 0)
         clear firstValuePosn;
         clear lastValuePosn;
         clear startIndex;
-       
         Flag = LogData2SigMF( S1,ObjSigMF,TotalTraceCount,Opt );
         set(handles.SequenceNumber,'String',[num2str(TotalTraceCount)]);
         TotalTraceCount = TotalTraceCount +1;
-        newSampleT = 0;
         
     end
     
